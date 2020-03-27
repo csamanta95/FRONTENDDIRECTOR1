@@ -8,16 +8,19 @@ class ProfileContainer extends Component {
     let {id, username, actors} = this.props.director
 // console.log(this.props.director)
     return (
-      <div>
-        <h2>Welcome {username}!</h2>
+      <div className="font">
+        <h2>Welcome Director, {username}!</h2>
         <ol>
           {
             actors.map((actor) => {
-              return <Actor key={actor.id} actor={actor}/>
+              return <Actor key={actor.id} actor={actor}
+              deleteActor={this.props.deleteActor}
+              />
             })
           }
         </ol>
 
+        
           <NewActorForm token={this.props.token} 
           addActor={this.props.addActor} />
       </div>

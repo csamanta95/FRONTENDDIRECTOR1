@@ -119,11 +119,34 @@ addActor = (actorObj) => {
   })
 }
 
+deleteActor = (id) => {
+  // console.log(id)
+  fetch(`http://localhost:3000/actors/${id}`, {
+      method: "DELETE"
+    })
+    .then(r => r.json())
+    .then(() => {
+  let filteredArray = this.state.director.actors.filter(actorObj => {
+    return actorObj.id !== id
+  })
+  this.setState({
+    director: {
+      ...this.state.director,
+      actors: filteredArray
+    }
+  })
+})
+}
+
+
+
+
 renderProfile = (routerProps) => {
   return <ProfileContainer
     director={this.state.director}
     token={this.state.token}
     addActor={this.addActor}
+    deleteActor={this.deleteActor}
   />
 }
 

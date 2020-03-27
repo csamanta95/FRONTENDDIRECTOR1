@@ -37,21 +37,5 @@
   }
 }
 
-.card__image {
-  /* background-position: center center;
-  background-repeat: no-repeat; */
-  /* background-size: cover; */
-  width: 200px;
-    height: 120px;
-  /* border-top-left-radius: 0.25rem; */
-  /* border-top-right-radius: 0.25rem;
-  filter: contrast(70%);
-  overflow: hidden;
-  position: relative;
-  transition: filter 0.5s cubic-bezier(.43,.41,.22,.91); */
-}
 
-.card img {
-  width: 10%;
-    height: 10%;
-}
+

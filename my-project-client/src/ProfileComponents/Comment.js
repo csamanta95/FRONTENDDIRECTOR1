@@ -1,27 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react'
 
-const Comment = (props) => {
-    const comment= props
-    // console.log(comment)
-    // const commentArray = comment.map((com) => {
-    //     <li>{com}</li>
+
+class Comment extends Component {
+
+   
+
+render(){
+    // let {comment} = this.props
+    console.log(this.props)
+    // let arrayOfComments = this.props.actor.comments.map((comment, index) => {
+    //     return <Comment key={comment.id} comment={comment}/>
     // })
-    // console.log(comment)
-    // const comment= props.comments
-    return(
-        <div className="burger">
-        <h3 className="burger_title">
-          
+  return(
+      <div>
+         <li>{this.props.comments} </li>     
+                  
+       </div>
+       
         
-        </h3>
-          
-      </div>
-     
-      )
-    }
-  
-  
-  
-  
-  
+
+      
+    )
+  }
+}
   export default Comment;

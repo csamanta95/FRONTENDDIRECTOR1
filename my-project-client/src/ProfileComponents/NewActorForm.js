@@ -11,7 +11,7 @@ class NewActorForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.props.token);
+    console.log(this.props.token)
 
     fetch("http://localhost:3000/actors", {
       method: "POST",
@@ -28,7 +28,7 @@ class NewActorForm extends Component {
     })
     .then(r => r.json())
     .then((resp) => {
-      console.log(resp);
+      // console.log(resp);
       if (resp.id) {
         this.props.addActor(resp)
       } else {
@@ -45,52 +45,23 @@ class NewActorForm extends Component {
   }
 
   render() {
+    // console.log(this.props.token)
     return (
+
+    <div className="second-form">
+    <div class="form-style-3">
       <form onSubmit={this.handleSubmit}>
-        <h3>Add another actor/actress</h3>
-        <input 
-            type="text" 
-            name="image" 
-            placeholder="Enter image URL..." 
-            className="input-text"
-            value={this.state.image}
-            onChange={this.handleChange}
-          />
-          <br/>
-        <input 
-            type="text" 
-            name="name" 
-            placeholder="Enter actor/actress name..." 
-            className="input-text"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <br/>
-          <input 
-            type="text" 
-            name="age" 
-            placeholder="age..." 
-            className="input-text"
-            value={this.state.age}
-            onChange={this.handleChange}
-          />
-          <br/>
-          <input 
-            type="text" 
-            name="experience" 
-            placeholder="experience..." 
-            className="input-text"
-            value={this.state.experience}
-            onChange={this.handleChange}
-          />
-          <br/>
-          <input 
-            type="submit" 
-            name="submit" 
-            value="Add" 
-            className="submit"
-          />
+      <fieldset><legend>Add another actor/actress</legend>
+        
+        <label for="field1"><span>Image <span className="required">*</span></span><input type="url" class="input-field" name="image" value={this.state.image} onChange={this.handleChange} /></label>
+        <label for="field2"><span>Name<span className="required">*</span></span><input type="text" class="input-field" name="name" value={this.state.name} onChange={this.handleChange} /></label>
+        <label for="field3"><span>Age<span className="required">*</span></span><input type="text" class="input-field" name="age" value={this.state.age} onChange={this.handleChange} /></label>
+        <label for="field4"><span>Experience <span className="required">*</span></span><input type="text" class="input-field" name="experience" value={this.state.experience} onChange={this.handleChange} /></label>
+        <label><span> </span><input type="submit" value="Submit" /></label>
+          </fieldset>
       </form>
+    </div>
+    </div>
     );
   }
 

@@ -1,41 +1,38 @@
-import React from 'react';
+import React, {Component} from 'react'
 import Comment from './Comment'
 
-const Actor = ({actor}) => {
-  return(
+class Actor extends Component {
 
-    <li className="cards__item">
+    handleDelete = (id) => {
+    this.props.deleteActor(this.props.actor.id);
+    }
+
+render(){
+    let {name, image, experience, age} = this.props.actor
+    console.log(this.props)
+    let arrayOfComments = this.props.actor.comments.map((comment, index) => {
+        return <Comment key={index} comment={comment}/>
+    })
+  return(
         <div className="card">
-          <img src={actor.image} alt={actor.name}
+          <img src={image} alt={name}
             className="card__image"
             // onClick={ this.handleClick }
           />
-          <div className="card__content">
-            <div className="card__title">{actor.name}</div>
-           
-            <div className="card__detail">
-              <p>Experience: {actor.experience}</p>
-              <p>Age: {actor.age}</p>
+            <p>{name}</p>
+            <p>Experience: {experience}</p>
+              <p>Age: {age}</p>
+              <button onClick={this.handleDelete} className="del-btn">Delete</button> 
+              <p>{arrayOfComments} </p>
+                  
+        </div>
+       
+        
 
-              <ul className="comment">
-                  {
-        actor.comments.map((comment, index) => {
-          return <Comment key={index} comment={comment}/>
-        })
-    }
-      </ul>
-              
-                
-        </div>
-        </div>
-        </div>
-
-      </li>
-    );
+      
+    )
   }
-
-
-
+}
 
 
 export default Actor;
