@@ -2,7 +2,6 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import Form from './components/Form'
 import NavBar from './components/NavBar'
-
 import Home from './components/Home'
 import ProfileContainer from './ProfileComponents/ProfileContainer'
 import Search from './ProfileComponents/Search'

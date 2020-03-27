@@ -12,14 +12,23 @@ class Search extends React.Component {
 
   render() {
   return (
+      
       <div>
-    <div className="search">
-      <input type="text" name="searchTerm"
+   
+
+<div className="wrap">
+   <div className="search">
+    
+      <input input type="text" name="searchTerm"
         placeholder="search by name/experience"
         value={this.props.searchTerm}
-        onChange={this.handleChange} 
-      />
-      </div>
+        onChange={this.handleChange} /> 
+      <button type="submit" class="searchButton">
+        <i className="fa fa-search"></i>
+     </button>
+   </div>
+</div>
+    
       
       <div className="rating">
        <label htmlFor="rating">Sort By Rating:</label>
@@ -27,7 +36,7 @@ class Search extends React.Component {
         checked={this.props.checkBox} onChange={this.handleChangeCheck} 
         />
     </div>
-    </div>
+    </div> 
   );
 }
 
