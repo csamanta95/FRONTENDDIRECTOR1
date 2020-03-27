@@ -1,20 +1,36 @@
 import React from 'react';
 
-const Search = (props) => {
+class Search extends React.Component {
 
-  const handleChange = (e) => {
-    props.changeTheSearchTerm(e.target.value)
+  handleChange = (e) => {
+    this.props.changeTheSearchTerm(e.target.value)
   }
 
+  handleChangeCheck = (e) => {
+    this.props.checkArray(e.target.value)
+  }
+
+  render() {
   return (
-    <div>
+      <div>
+    <div className="search">
       <input type="text" name="searchTerm"
-        placeholder="search by name"
-        value={props.searchTerm}
-        onChange={handleChange}
+        placeholder="search by name/experience"
+        value={this.props.searchTerm}
+        onChange={this.handleChange} 
       />
+      </div>
+      
+      <div className="rating">
+       <label htmlFor="rating">Sort By Rating:</label>
+        <input type="checkbox" id="rating" name="rating"
+        checked={this.props.checkBox} onChange={this.handleChangeCheck} 
+        />
+    </div>
     </div>
   );
+}
+
 }
 
 export default Search;

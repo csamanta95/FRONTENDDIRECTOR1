@@ -17,6 +17,7 @@ state={
     actors: []
   },
   searchTerm: "",
+  checkBox: false,
   token: ""
 }
 
@@ -106,6 +107,13 @@ changeTheSearchTerm = (termOfChild) => {
   })
 }
 
+checkArray = (e) => {
+  this.setState({
+    checkBox: !this.state.checkBox
+
+  })
+}
+
 
 
 renderForm = (routerProps) => {
@@ -186,8 +194,12 @@ returnSearchArray = () => {
   // returnArray.sort((a, b) =>  a.actors.name.localeCompare(b.actors.name))
   
     let returnArray= this.state.director.actors.filter((act) => {
-      return act.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) 
+      return act.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || act.experience.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     })
+
+    if (this.state.checkBox)
+    returnArray.sort((a, b) =>  b.rating - a.rating)
+    
     return returnArray
 }
 
@@ -215,6 +227,8 @@ renderProfile = (routerProps) => {
         <br />
         <Search searchTerm={this.state.searchTerm} 
         changeTheSearchTerm={this.changeTheSearchTerm }
+        checkBox={this.state.checkBox}
+        checkArray={this.checkArray}
         />
         <Switch>
           <Route path="/login" render={ this.renderForm } />
