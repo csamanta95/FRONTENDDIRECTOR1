@@ -5,7 +5,7 @@ import NavBar from './components/NavBar'
 
 import Home from './components/Home'
 import ProfileContainer from './ProfileComponents/ProfileContainer'
-
+import Search from './ProfileComponents/Search'
 import {withRouter} from 'react-router-dom'
 
 
@@ -16,7 +16,7 @@ state={
     username: "",
     actors: []
   },
-
+  searchTerm: "",
   token: ""
 }
 
@@ -98,6 +98,13 @@ handleRegisterSubmit = (userInfo) => {
 }
 
 
+changeTheSearchTerm = (termOfChild) => {
+  
+  
+  this.setState({
+    searchTerm: termOfChild
+  })
+}
 
 
 
@@ -174,13 +181,22 @@ handleRating = (id, number) => {
   
 
 
-
+returnSearchArray = () => {
+  
+  // returnArray.sort((a, b) =>  a.actors.name.localeCompare(b.actors.name))
+  
+    let returnArray= this.state.director.actors.filter((act) => {
+      return act.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()) 
+    })
+    return returnArray
+}
 
 
 
 renderProfile = (routerProps) => {
   return <ProfileContainer
-    director={this.state.director}
+    // director={this.state.director}
+    director={this.returnSearchArray()}
     token={this.state.token}
     addActor={this.addActor}
     deleteActor={this.deleteActor}
@@ -191,12 +207,15 @@ renderProfile = (routerProps) => {
 
 
 
-
   render(){
     console.log(this.state)
     return (
       <div className="App">
         <NavBar/>
+        <br />
+        <Search searchTerm={this.state.searchTerm} 
+        changeTheSearchTerm={this.changeTheSearchTerm }
+        />
         <Switch>
           <Route path="/login" render={ this.renderForm } />
           <Route path="/register" render={ this.renderForm } />

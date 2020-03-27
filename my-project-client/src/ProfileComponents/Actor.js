@@ -32,7 +32,7 @@ render(){
             </div>
             <p>Experience: {experience}</p>
             <p>Contact: {contact}</p>
-              <button onClick={this.handleDelete} className="btn-slice">Delete</button> 
+            <button onClick={this.handleDelete} className="btn-slice">Delete</button> 
               
                   
         </div>
