@@ -6,7 +6,9 @@ class NewActorForm extends Component {
     image: "",
     name: "",
     age: "",
-    experience: ""
+    experience: "",
+    contact: "",
+    rating: ""
   }
 
   handleSubmit = (e) => {
@@ -23,7 +25,9 @@ class NewActorForm extends Component {
         image: this.state.image,
         name: this.state.name,
         age: this.state.age,
-        experience: this.state.experience
+        experience: this.state.experience,
+        contact: this.state.contact,
+        rating: this.state.rating
       })
     })
     .then(r => r.json())
@@ -57,6 +61,8 @@ class NewActorForm extends Component {
         <label for="field2"><span>Name<span className="required">*</span></span><input type="text" class="input-field" name="name" value={this.state.name} onChange={this.handleChange} /></label>
         <label for="field3"><span>Age<span className="required">*</span></span><input type="text" class="input-field" name="age" value={this.state.age} onChange={this.handleChange} /></label>
         <label for="field4"><span>Experience <span className="required">*</span></span><input type="text" class="input-field" name="experience" value={this.state.experience} onChange={this.handleChange} /></label>
+        <label for="field4"><span>Contact <span className="required">*</span></span><input type="text" class="input-field" name="contact" value={this.state.contact} onChange={this.handleChange} /></label>
+        <label for="field4"><span>Rating <span className="required">*</span></span><input type="text" class="input-field" name="rating" value={this.state.rating} onChange={this.handleChange} /></label>
         <label><span> </span><input type="submit" value="Submit" /></label>
           </fieldset>
       </form>

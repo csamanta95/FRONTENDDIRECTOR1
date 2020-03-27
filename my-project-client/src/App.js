@@ -138,6 +138,43 @@ deleteActor = (id) => {
 })
 }
 
+handleRating = (id, number) => {
+  let foundObject = this.state.director.actors.find(rate => rate.id === id)
+  fetch(`http://localhost:3000/actors/${id}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      ...foundObject,
+      rating: foundObject.rating + number
+    })
+  })
+  .then(r => r.json())
+  .then(() => {
+  // console.log(number)
+  let updatedArray = this.state.director.actors.map(rate => {
+    if (rate.id === id) {
+      return {
+        ...rate,
+        rating: rate.rating + number
+      }
+    } else {
+      return rate
+    }
+  })
+  this.setState({
+    director: {
+      ...this.state.director,
+      actors: updatedArray
+    }
+  })
+})
+}
+  
+
+
+
 
 
 
@@ -147,6 +184,7 @@ renderProfile = (routerProps) => {
     token={this.state.token}
     addActor={this.addActor}
     deleteActor={this.deleteActor}
+    handleRating={this.handleRating}
   />
 }
 

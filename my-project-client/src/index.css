@@ -15,7 +15,7 @@ code {
   border: grey solid 1px; 
   padding: 1rem;
   width: 25rem;
-  height: 35rem;
+  height: 40rem;
   display: inline-grid;
   margin: 1rem 2rem;
   box-shadow: 5px 5px #3AA7A3;
@@ -285,4 +285,45 @@ ul.nav li a:hover {
   text-align: center;
 }
 
+
+  button {
+	display: block;
+	width: 200px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+	font-family: sans-serif;
+	text-decoration: none;
+	color: #333;
+	border: 2px solid #333;
+	letter-spacing: 2px;
+	text-align: center;
+	position: relative;
+	transition: all .35s;
+  }
+
+  button span{
+	position: relative;
+	z-index: 2;
+	text-align: center;
+  }
+  
+  button:after{
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: #E85F5C;
+	transition: all .35s;
+  }
+  
+  button:hover{
+	color: #fff;
+  }
+  
+  button:hover:after{
+	width: 100%;
+  }
 

@@ -15,6 +15,7 @@ class ProfileContainer extends Component {
             actors.map((actor) => {
               return <Actor key={actor.id} actor={actor}
               deleteActor={this.props.deleteActor}
+              handleRating={this.props.handleRating}
               />
             })
           }
